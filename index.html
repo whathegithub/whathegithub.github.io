@@ -152,6 +152,164 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/FFmpeg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JBW">
+      <meta itemprop="description" content="一个写字的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BWQZ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/27/FFmpeg/" class="post-title-link" itemprop="url">FFmpeg</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-27 08:47:17 / 修改时间：09:14:22" itemprop="dateCreated datePublished" datetime="2022-03-27T08:47:17Z">2022-03-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>安装:</p>
+<p>Windows <a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_46278037/article/details/113790540">安装步骤</a></p>
+<hr>
+<p>命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg &#123;1&#125; &#123;2&#125; -i &#123;3&#125; &#123;4&#125; &#123;5&#125; </span><br></pre></td></tr></table></figure>
+
+<p>or </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ffmpeg \</span><br><span class="line">[全局参数] \</span><br><span class="line">[输入文件参数] \</span><br><span class="line">-i [输入文件] \</span><br><span class="line">[输出文件参数] \</span><br><span class="line">[输出文件]</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>编码器:</p>
+<hr>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/%E6%9B%B4%E6%96%B0SSH%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JBW">
+      <meta itemprop="description" content="一个写字的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BWQZ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/27/%E6%9B%B4%E6%96%B0SSH%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">更新SSH算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-27 08:41:04 / 修改时间：09:12:37" itemprop="dateCreated datePublished" datetime="2022-03-27T08:41:04Z">2022-03-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>背景: <a target="_blank" rel="noopener" href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">提升SSH安全性</a></p>
+<hr>
+<p>相关的错误提示:</p>
+<p><strong>ERROR: You’re using an RSA key with SHA-1, which is no longer allowed. Please use a newer client or a different key type.</strong></p>
+<hr>
+<p>步骤:</p>
+<ol>
+<li><p>github 上删除旧的 ssh key</p>
+</li>
+<li><p>$ ssh-keygen -t ed25519 -C “<a href="mailto:&#121;&#x6f;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;">&#121;&#x6f;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;</a>“</p>
+<ol>
+<li><blockquote>
+<p>id_ed25519</p>
+<p>id_ed25519.pub</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li><p>cat ~&#x2F;.ssh&#x2F;id_ed25519.pub  复制生成的公钥</p>
+</li>
+<li><p>重启 cmd 和 git bash</p>
+</li>
+</ol>
+<hr>
+<p>参考:</p>
+<p>[1]<a target="_blank" rel="noopener" href="https://blog.csdn.net/shog808/article/details/76563136">https://blog.csdn.net/shog808/article/details/76563136</a></p>
+<p>[2]<a target="_blank" rel="noopener" href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">https://github.blog/2021-09-01-improving-git-protocol-security-github/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -280,10 +438,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-19 04:19:00 / 修改时间：10:11:08" itemprop="dateCreated datePublished" datetime="2022-03-19T04:19:00Z">2022-03-19</time>
+              <time title="创建时间：2022-03-19 04:19:00" itemprop="dateCreated datePublished" datetime="2022-03-19T04:19:00Z">2022-03-19</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 13:14:36" itemprop="dateModified" datetime="2022-03-27T13:14:36Z">2022-03-27</time>
+              </span>
 
           
 
@@ -348,12 +512,30 @@
 <p>编码:按一定格式记录采样和量化后的数字数据。</p>
 </blockquote>
 <p>声道:声道数也就是声音录制时的声音源数量或者回放时相应的扬声器数量</p>
+<p>为什么进行编码?</p>
+<ul>
+<li><p>对于一段声音,如果不进行编码则~</p>
+</li>
+<li><p>码率V&#x3D; 频率 * 位数 * 通道;</p>
+</li>
+<li><p>码率: 单位时间的数据量; (kbps , Mbps)  码率越高,数据量越大,音视频质量越好.</p>
+</li>
+<li><p>一帧的播放时间 &#x3D;  一帧对样的采样数量 &#x2F;  采样频率;  22.32(ms) &#x3D; 1024 &#x2F; 44100;</p>
+</li>
+</ul>
+<p>​                    &gt;    视频帧: 一帧1024 sample ; 音频帧: 一帧1152 sample</p>
+<blockquote>
+<pre><code>录制音频属性:
+</code></pre>
+<p>采样频率： fm &#x3D; 44.1KHz<br>量化位数：16bit         &#x2F;&#x2F;可以较为详细的表示声音的幅度<br>声道配置：2(双声道)</p>
+<p>如果直接使用录制音频流并发送到另一端进行播放，则有码率 V &#x3D; 44.1K * 16 *2 &#x3D; 1411.2 Kbps &#x3D; 176.4KBps，即每秒需要传输速率大概176.4KB。<br> 一个音频帧时长为20ms，每个音频数据包大小为 size &#x3D; 176.4KBps * 0.02s &#x3D; 3.528KB，可以取整为3600Byte。<br>  那么，每秒大概发送 176.4&#x2F;3.6&#x3D;49 个数据包，每个数据包大小为3.6KB。<br>  如果再考虑到数据报头，实测每秒发送约45个数据包，每秒传输速率大概180KB。这就要求网络质量和硬件设备必须很好，而且信道干扰较弱，并且链接的设备不能过多。只要稍微信号不好，就会导致丢包率特别高，而且延时十分大，根本无法满足通信的需要。所以需要进行语音压缩、降噪等处理。</p>
+</blockquote>
 <p>数据格式:</p>
 <ol>
 <li>通常音频所说的裸数据就是 PCM</li>
 </ol>
 <blockquote>
-<p>描述一段 PCM 数据一般需要以下几个概念：量化格式(sampleFormat)、采样率（sampleRate）、声道数 (channel) 。</p>
+<p>描述一段 PCM 数据一般需要以下几个概念：量化格式(sampleFormat)、采样率（sampleRate）、声道数 (channel) </p>
 </blockquote>
 <ol start="2">
 <li>编码算法(压缩):</li>
@@ -365,6 +547,9 @@
 <li>MP3 具有不错的压缩比，使用 LAME 编码 （MP3 编码格式的一种实现）的中高码率的 MP3 文件，听感上非常接近源 WAV 文件</li>
 <li>AAC 是新一代的音频有损压缩技术，它通过一些附加的编码技术(比如 PS 、SBR) 等，衍生出了 LC-AAC 、HE-AAC 、HE-AAC v2 三种主要的编码格式。<em>一般在音视频通话，直播中，短视频，以及大部分的视频都是用aac编码。</em></li>
 <li>Ogg 是一种非常有潜力的编码，在各种码率下都有比较优秀的表现，尤其是在中低码率场景下。 <em>可以用比 MP3 更小的码率实现比 MP3 更好的音质</em></li>
+<li>Speex 免费开源,专用于语音.  特性:  ①语音的动态检查(VAD)</li>
+<li>Opus 有损声音编码</li>
+<li>Slik</li>
 </ol>
 </blockquote>
 <ol start="3">
@@ -381,8 +566,10 @@
 </blockquote>
 </li>
 </ol>
-<p>[参考]</p>
-<p>1.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg">https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg</a>   音频基础</p>
+<hr>
+<p>参考</p>
+<p>[1].<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg">https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg</a>   音频基础</p>
+<p>[2].<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/6e51b4ab4f9a">https://www.jianshu.com/p/6e51b4ab4f9a</a> </p>
 
       
     </div>
@@ -749,7 +936,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

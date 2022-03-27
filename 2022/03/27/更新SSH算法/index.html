@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Android测试的分类:  单元测试( Junit4 , Junit5,Mockito,PowerMockito,Robolectric) UI测试 (Espresso, UI Automator) 压力测试 (Monkey)  单元测试的目的: 方法测试 单元测试框架Junit4 (官方) 是事实上的Java标准测试库，并且它是JUnit框架有史以来的最大改进，其主要目标便是利用Java5的A">
+  <meta name="description" content="背景: 提升SSH安全性  相关的错误提示: ERROR: You’re using an RSA key with SHA-1, which is no longer allowed. Please use a newer client or a different key type.  步骤:  github 上删除旧的 ssh key  $ ssh-keygen -t ed25519 -C">
 <meta property="og:type" content="article">
-<meta property="og:title" content="单元测试">
-<meta property="og:url" content="http://example.com/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:title" content="更新SSH算法">
+<meta property="og:url" content="http://example.com/2022/03/27/%E6%9B%B4%E6%96%B0SSH%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="BWQZ">
-<meta property="og:description" content="Android测试的分类:  单元测试( Junit4 , Junit5,Mockito,PowerMockito,Robolectric) UI测试 (Espresso, UI Automator) 压力测试 (Monkey)  单元测试的目的: 方法测试 单元测试框架Junit4 (官方) 是事实上的Java标准测试库，并且它是JUnit框架有史以来的最大改进，其主要目标便是利用Java5的A">
+<meta property="og:description" content="背景: 提升SSH安全性  相关的错误提示: ERROR: You’re using an RSA key with SHA-1, which is no longer allowed. Please use a newer client or a different key type.  步骤:  github 上删除旧的 ssh key  $ ssh-keygen -t ed25519 -C">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-03-19T10:23:41.513Z">
-<meta property="article:modified_time" content="2022-03-27T08:05:53.115Z">
+<meta property="article:published_time" content="2022-03-27T08:41:04.073Z">
+<meta property="article:modified_time" content="2022-03-27T09:12:37.691Z">
 <meta property="article:author" content="JBW">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+<link rel="canonical" href="http://example.com/2022/03/27/%E6%9B%B4%E6%96%B0SSH%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>单元测试 | BWQZ</title>
+  <title>更新SSH算法 | BWQZ</title>
   
 
 
@@ -155,7 +155,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/27/%E6%9B%B4%E6%96%B0SSH%E7%AE%97%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -168,7 +168,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          单元测试
+          更新SSH算法
         </h1>
 
         <div class="post-meta">
@@ -177,16 +177,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2022-03-19 10:23:41" itemprop="dateCreated datePublished" datetime="2022-03-19T10:23:41Z">2022-03-19</time>
+              <time title="创建时间：2022-03-27 08:41:04 / 修改时间：09:12:37" itemprop="dateCreated datePublished" datetime="2022-03-27T08:41:04Z">2022-03-27</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-27 08:05:53" itemprop="dateModified" datetime="2022-03-27T08:05:53Z">2022-03-27</time>
-              </span>
 
           
             <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
@@ -206,47 +200,33 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Android测试的分类:</p>
-<blockquote>
-<p>单元测试( Junit4 , Junit5,Mockito,PowerMockito,Robolectric)</p>
-<p>UI测试 (Espresso, UI Automator)</p>
-<p>压力测试 (Monkey)</p>
+        <p>背景: <a target="_blank" rel="noopener" href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">提升SSH安全性</a></p>
+<hr>
+<p>相关的错误提示:</p>
+<p><strong>ERROR: You’re using an RSA key with SHA-1, which is no longer allowed. Please use a newer client or a different key type.</strong></p>
+<hr>
+<p>步骤:</p>
+<ol>
+<li><p>github 上删除旧的 ssh key</p>
+</li>
+<li><p>$ ssh-keygen -t ed25519 -C “<a href="mailto:&#121;&#x6f;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;">&#121;&#x6f;&#x75;&#x72;&#x5f;&#101;&#109;&#97;&#105;&#108;&#x40;&#x65;&#120;&#97;&#109;&#x70;&#108;&#101;&#46;&#x63;&#111;&#x6d;</a>“</p>
+<ol>
+<li><blockquote>
+<p>id_ed25519</p>
+<p>id_ed25519.pub</p>
 </blockquote>
-<p>单元测试的目的: 方法测试</p>
-<h2 id="单元测试框架"><a href="#单元测试框架" class="headerlink" title="单元测试框架"></a>单元测试框架</h2><h3 id="Junit4-官方"><a href="#Junit4-官方" class="headerlink" title="Junit4 (官方)"></a>Junit4 (官方)</h3><blockquote>
-<p>是事实上的Java标准测试库，并且它是JUnit框架有史以来的最大改进，其主要目标便是利用Java5的Annotation特性简化测试用例的编写。</p>
-<ul>
-<li>缺点：无法单独对Android UI，一些类进行操作，与原生JAVA有一些差异。</li>
-<li><a target="_blank" rel="noopener" href="https://pdai.tech/md/develop/ut/dev-ut-x-junit.html">https://pdai.tech/md/develop/ut/dev-ut-x-junit.html</a></li>
-</ul>
-</blockquote>
-<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><p> dependencies {        …        testImplementation ‘junit:junit:4.12’    } </p>
-<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解:"></a>常用注解:</h4><p>@Test 指明这是一个测试方法 (@Test注解可以接受2个参数，一个是预期错误    expected，一个是超时时间timeout，    </p>
-<blockquote>
-<p>@Test(expected &#x3D; IndexOutOfBoundsException.class),    </p>
-</blockquote>
-<blockquote>
-<p>@Test（timeout &#x3D; 1000)   </p>
-</blockquote>
-<p>@Before 在所有测试方法之前执行    </p>
-<p>@After 在所有测试方法之后执行   </p>
-<p>@BeforeClass 在该类的所有测试方法和@Before方法之前执行 （修饰的方法必须是静态的）</p>
-<p>@AfterClass 在该类的所有测试方法和@After    方法之后执行（修饰的方法必须是静态的）    </p>
-<p>@Ignore 忽略此单元测试</p>
-<h4 id="常用测试方法"><a href="#常用测试方法" class="headerlink" title="常用测试方法"></a>常用测试方法</h4><blockquote>
-<p>assertEquals(expected, actual)          判断2个值是否相等     </p>
-<p>assertEquals(expected, actual,errormsg)          判断2个值是否相等</p>
-<p>assertEquals(expected, actual,tolerance)       tolerance 偏差值</p>
-<p>assertEquals(expected, actual,tolerance,errormsg)       tolerance 偏差值</p>
-</blockquote>
-<p>自定义junit 规则</p>
-<blockquote>
-<p>实现TestRule接口并重写apply方法</p>
-<p>在想要的测试类中使用@Rule注解声明使用JsonChaoRule即可（注意<strong>被@Rule注解的变量必须是final的</strong>）</p>
-</blockquote>
-<p>​    </p>
-<p>[参考]</p>
-<p>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904040418017288">https://juejin.cn/post/6844904040418017288</a> 一文全面了解Android单元测试</p>
+</li>
+</ol>
+</li>
+<li><p>cat ~&#x2F;.ssh&#x2F;id_ed25519.pub  复制生成的公钥</p>
+</li>
+<li><p>重启 cmd 和 git bash</p>
+</li>
+</ol>
+<hr>
+<p>参考:</p>
+<p>[1]<a target="_blank" rel="noopener" href="https://blog.csdn.net/shog808/article/details/76563136">https://blog.csdn.net/shog808/article/details/76563136</a></p>
+<p>[2]<a target="_blank" rel="noopener" href="https://github.blog/2021-09-01-improving-git-protocol-security-github/">https://github.blog/2021-09-01-improving-git-protocol-security-github/</a></p>
 
     </div>
 
@@ -262,12 +242,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/03/19/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80/" rel="prev" title="音视频基础">
-      <i class="fa fa-chevron-left"></i> 音视频基础
+    <a href="/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="prev" title="单元测试">
+      <i class="fa fa-chevron-left"></i> 单元测试
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/03/27/%E6%9B%B4%E6%96%B0SSH%E7%AE%97%E6%B3%95/" rel="next" title="更新SSH算法">
-      更新SSH算法 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/03/27/FFmpeg/" rel="next" title="FFmpeg">
+      FFmpeg <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -327,7 +307,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95%E6%A1%86%E6%9E%B6"><span class="nav-number">1.</span> <span class="nav-text">单元测试框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Junit4-%E5%AE%98%E6%96%B9"><span class="nav-number">1.1.</span> <span class="nav-text">Junit4 (官方)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9B%86%E6%88%90"><span class="nav-number">1.1.1.</span> <span class="nav-text">集成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%B3%A8%E8%A7%A3"><span class="nav-number">1.1.2.</span> <span class="nav-text">常用注解:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95"><span class="nav-number">1.1.3.</span> <span class="nav-text">常用测试方法</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
