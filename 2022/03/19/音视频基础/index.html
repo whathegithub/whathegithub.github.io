@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.1.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="前言: 目前音视频中使用最多的编解码方式 H264+AAC相关名词:  帧 Frame  I帧 : 相对完整帧( 去掉了人眼不敏感的色度,保留了人眼敏感的亮度) P帧 B帧   编码 (编码最重要的目的是 为了进行数据压缩,以此来降低数据传输和存储的成本)  软编解码 : 利用软件本身或使用CPU对音视频进行编解码  优点: 兼容性好 缺点 : CPU占用率高, app占用率高  软解码器开头通常">
+<meta property="og:type" content="article">
+<meta property="og:title" content="音视频基础">
+<meta property="og:url" content="http://example.com/2022/03/19/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="BWQZ">
+<meta property="og:description" content="前言: 目前音视频中使用最多的编解码方式 H264+AAC相关名词:  帧 Frame  I帧 : 相对完整帧( 去掉了人眼不敏感的色度,保留了人眼敏感的亮度) P帧 B帧   编码 (编码最重要的目的是 为了进行数据压缩,以此来降低数据传输和存储的成本)  软编解码 : 利用软件本身或使用CPU对音视频进行编解码  优点: 兼容性好 缺点 : CPU占用率高, app占用率高  软解码器开头通常">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="c:/Users/18853/Pictures/jzz471kmts.jpeg">
+<meta property="article:published_time" content="2022-03-19T04:19:00.777Z">
+<meta property="article:modified_time" content="2022-03-19T10:11:08.618Z">
+<meta property="article:author" content="JBW">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/18853/Pictures/jzz471kmts.jpeg">
+
+<link rel="canonical" href="http://example.com/2022/03/19/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>音视频基础 | BWQZ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">BWQZ</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JBW">
+      <meta itemprop="description" content="一个写字的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BWQZ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          音视频基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-19 04:19:00 / 修改时间：10:11:08" itemprop="dateCreated datePublished" datetime="2022-03-19T04:19:00Z">2022-03-19</time>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h5 id="前言-目前音视频中使用最多的编解码方式-H264-AAC"><a href="#前言-目前音视频中使用最多的编解码方式-H264-AAC" class="headerlink" title="前言: 目前音视频中使用最多的编解码方式 H264+AAC"></a>前言: 目前音视频中使用最多的编解码方式 H264+AAC</h5><p>相关名词:</p>
+<ol>
+<li><p>帧 Frame</p>
+<ol>
+<li>I帧 : 相对完整帧( 去掉了人眼不敏感的色度,保留了人眼敏感的亮度)</li>
+<li>P帧</li>
+<li>B帧</li>
+</ol>
+</li>
+<li><p>编码 (编码最重要的目的是 为了进行数据压缩,以此来降低数据传输和存储的成本)</p>
+<ol>
+<li><p>软编解码 : 利用软件本身或使用CPU对音视频进行编解码</p>
+<blockquote>
+<p>优点: 兼容性好</p>
+<p>缺点 : CPU占用率高, app占用率高</p>
+</blockquote>
+<p>软解码器开头通常是 <em>OMX.google</em></p>
+</li>
+<li><p>硬编解码 : 使用非CPU进行编解码,如显卡GPU,专用DSP芯片,厂商芯片.</p>
+<blockquote>
+<p>优点: 编解码速度快且效率高,CPU占用率低</p>
+<p>缺点:兼容性不好</p>
+</blockquote>
+<p>硬解码器开头通常是<em>OMX.[hardware_vendor]</em></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 判断是否是软解码, 系统api</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">IsSoftwareCodec</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *componentName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">strncmp</span>(<span class="string">&quot;OMX.google.&quot;</span>, componentName, <span class="number">11</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">strncmp</span>(<span class="string">&quot;OMX.&quot;</span>, componentName, <span class="number">4</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取手机所支持的编解码器</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequiresApi(Build.VERSION_CODES.LOLLIPOP)</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">getSupportCodec</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> list = MediaCodecList(MediaCodecList.REGULAR_CODECS)</span><br><span class="line">    <span class="keyword">val</span> codecs = list.codecInfos</span><br><span class="line">    Log.d(TAG, <span class="string">&quot;Decoders:&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> (codec <span class="keyword">in</span> codecs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!codec.isEncoder) Log.d(TAG, codec.name)</span><br><span class="line">    &#125;</span><br><span class="line">    Log.d(TAG, <span class="string">&quot;Encoders:&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> (codec <span class="keyword">in</span> codecs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (codec.isEncoder) Log.d(TAG, codec.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h6 id="MediaCodec-硬编解码"><a href="#MediaCodec-硬编解码" class="headerlink" title="MediaCodec 硬编解码"></a>MediaCodec 硬编解码</h6><ol>
+<li><blockquote>
+<p>MediaCodec调用的是系统注册过的编解码器，硬件厂商把自己的硬编解码器注册到系统中就是硬编解码，如果硬件厂商注册的是软编解码就是软解码。往往不同的硬件厂商是不一样的。然后MediaCodec负责调用。</p>
+<p><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://developer.android.google.cn/reference/android/media/MediaCodec?hl=en">https://developer.android.google.cn/reference/android/media/MediaCodec?hl=en</a></p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>​                </p>
+<h4 id="音频基础"><a href="#音频基础" class="headerlink" title="音频基础"></a>音频基础</h4><p>声波三要素: 频率, 振幅 , 波形</p>
+<p>声音信号 -&gt; 电信号 -&gt;  数字信号(二进制) </p>
+<img src="C:\Users\18853\Pictures\jzz471kmts.jpeg" alt="jzz471kmts" style="zoom:80%;" />
+
+<p>为了将模拟信号数字化, 需要进行 </p>
+<blockquote>
+<p>采样:在时间轴上对信号数字化；</p>
+<p>量化:在幅度轴上对信号数字化；</p>
+<p>编码:按一定格式记录采样和量化后的数字数据。</p>
+</blockquote>
+<p>声道:声道数也就是声音录制时的声音源数量或者回放时相应的扬声器数量</p>
+<p>数据格式:</p>
+<ol>
+<li>通常音频所说的裸数据就是 PCM</li>
+</ol>
+<blockquote>
+<p>描述一段 PCM 数据一般需要以下几个概念：量化格式(sampleFormat)、采样率（sampleRate）、声道数 (channel) 。</p>
+</blockquote>
+<ol start="2">
+<li>编码算法(压缩):</li>
+</ol>
+<blockquote>
+<p>PCM 、WAV、AAC 、MP3 、Ogg</p>
+<ol>
+<li>WAV 编码就是在 PCM 数据格式的前面加了 44 个字节，分别用来存储 PCM 的采样率、声道数、数据格式等信息。<em>特点: 音质好，大量软件支持。</em></li>
+<li>MP3 具有不错的压缩比，使用 LAME 编码 （MP3 编码格式的一种实现）的中高码率的 MP3 文件，听感上非常接近源 WAV 文件</li>
+<li>AAC 是新一代的音频有损压缩技术，它通过一些附加的编码技术(比如 PS 、SBR) 等，衍生出了 LC-AAC 、HE-AAC 、HE-AAC v2 三种主要的编码格式。<em>一般在音视频通话，直播中，短视频，以及大部分的视频都是用aac编码。</em></li>
+<li>Ogg 是一种非常有潜力的编码，在各种码率下都有比较优秀的表现，尤其是在中低码率场景下。 <em>可以用比 MP3 更小的码率实现比 MP3 更好的音质</em></li>
+</ol>
+</blockquote>
+<ol start="3">
+<li><p>播放PCM的两种方式</p>
+<blockquote>
+<p>在Android中有两种方法：一种是使用java层的<code>AudioTrack</code>方法，一种是使用底层的<code>OpenSLES</code>直接在<code>jni</code>层调用系统的<code>OpenSLES的c方法</code>实现。</p>
+</blockquote>
+</li>
+<li><p>音频采集的两种方式</p>
+<blockquote>
+<p>MediaRecorder 和 AudioRecord . MediaRecorder最终还是调用AudioRecord.</p>
+<p>区别:MediaRecorder 录制后的音频数据是经过压缩的, 需要设置编码器 ,可以用播放器播放.</p>
+<p>AudioRecord 录制的是PCM格式的数据.,需要用AudioTrack播放.</p>
+</blockquote>
+</li>
+</ol>
+<p>[参考]</p>
+<p>1.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg">https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg</a>   音频基础</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/03/17/AIDL/" rel="prev" title="AIDL">
+      <i class="fa fa-chevron-left"></i> AIDL
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" rel="next" title="单元测试">
+      单元测试 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%89%8D%E8%A8%80-%E7%9B%AE%E5%89%8D%E9%9F%B3%E8%A7%86%E9%A2%91%E4%B8%AD%E4%BD%BF%E7%94%A8%E6%9C%80%E5%A4%9A%E7%9A%84%E7%BC%96%E8%A7%A3%E7%A0%81%E6%96%B9%E5%BC%8F-H264-AAC"><span class="nav-number">1.</span> <span class="nav-text">前言: 目前音视频中使用最多的编解码方式 H264+AAC</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#MediaCodec-%E7%A1%AC%E7%BC%96%E8%A7%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">MediaCodec 硬编解码</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9F%B3%E9%A2%91%E5%9F%BA%E7%A1%80"><span class="nav-number"></span> <span class="nav-text">音频基础</span></a></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">JBW</p>
+  <div class="site-description" itemprop="description">一个写字的地方</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JBW</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -152,6 +152,256 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JBW">
+      <meta itemprop="description" content="一个写字的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BWQZ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/19/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">单元测试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-19 10:23:41" itemprop="dateCreated datePublished" datetime="2022-03-19T10:23:41Z">2022-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-27 08:05:53" itemprop="dateModified" datetime="2022-03-27T08:05:53Z">2022-03-27</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Android测试的分类:</p>
+<blockquote>
+<p>单元测试( Junit4 , Junit5,Mockito,PowerMockito,Robolectric)</p>
+<p>UI测试 (Espresso, UI Automator)</p>
+<p>压力测试 (Monkey)</p>
+</blockquote>
+<p>单元测试的目的: 方法测试</p>
+<h2 id="单元测试框架"><a href="#单元测试框架" class="headerlink" title="单元测试框架"></a>单元测试框架</h2><h3 id="Junit4-官方"><a href="#Junit4-官方" class="headerlink" title="Junit4 (官方)"></a>Junit4 (官方)</h3><blockquote>
+<p>是事实上的Java标准测试库，并且它是JUnit框架有史以来的最大改进，其主要目标便是利用Java5的Annotation特性简化测试用例的编写。</p>
+<ul>
+<li>缺点：无法单独对Android UI，一些类进行操作，与原生JAVA有一些差异。</li>
+<li><a target="_blank" rel="noopener" href="https://pdai.tech/md/develop/ut/dev-ut-x-junit.html">https://pdai.tech/md/develop/ut/dev-ut-x-junit.html</a></li>
+</ul>
+</blockquote>
+<h4 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h4><p> dependencies {        …        testImplementation ‘junit:junit:4.12’    } </p>
+<h4 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解:"></a>常用注解:</h4><p>@Test 指明这是一个测试方法 (@Test注解可以接受2个参数，一个是预期错误    expected，一个是超时时间timeout，    </p>
+<blockquote>
+<p>@Test(expected &#x3D; IndexOutOfBoundsException.class),    </p>
+</blockquote>
+<blockquote>
+<p>@Test（timeout &#x3D; 1000)   </p>
+</blockquote>
+<p>@Before 在所有测试方法之前执行    </p>
+<p>@After 在所有测试方法之后执行   </p>
+<p>@BeforeClass 在该类的所有测试方法和@Before方法之前执行 （修饰的方法必须是静态的）</p>
+<p>@AfterClass 在该类的所有测试方法和@After    方法之后执行（修饰的方法必须是静态的）    </p>
+<p>@Ignore 忽略此单元测试</p>
+<h4 id="常用测试方法"><a href="#常用测试方法" class="headerlink" title="常用测试方法"></a>常用测试方法</h4><blockquote>
+<p>assertEquals(expected, actual)          判断2个值是否相等     </p>
+<p>assertEquals(expected, actual,errormsg)          判断2个值是否相等</p>
+<p>assertEquals(expected, actual,tolerance)       tolerance 偏差值</p>
+<p>assertEquals(expected, actual,tolerance,errormsg)       tolerance 偏差值</p>
+</blockquote>
+<p>自定义junit 规则</p>
+<blockquote>
+<p>实现TestRule接口并重写apply方法</p>
+<p>在想要的测试类中使用@Rule注解声明使用JsonChaoRule即可（注意<strong>被@Rule注解的变量必须是final的</strong>）</p>
+</blockquote>
+<p>​    </p>
+<p>[参考]</p>
+<p>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904040418017288">https://juejin.cn/post/6844904040418017288</a> 一文全面了解Android单元测试</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/19/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="JBW">
+      <meta itemprop="description" content="一个写字的地方">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="BWQZ">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/03/19/%E9%9F%B3%E8%A7%86%E9%A2%91%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">音视频基础</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-03-19 04:19:00 / 修改时间：10:11:08" itemprop="dateCreated datePublished" datetime="2022-03-19T04:19:00Z">2022-03-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h5 id="前言-目前音视频中使用最多的编解码方式-H264-AAC"><a href="#前言-目前音视频中使用最多的编解码方式-H264-AAC" class="headerlink" title="前言: 目前音视频中使用最多的编解码方式 H264+AAC"></a>前言: 目前音视频中使用最多的编解码方式 H264+AAC</h5><p>相关名词:</p>
+<ol>
+<li><p>帧 Frame</p>
+<ol>
+<li>I帧 : 相对完整帧( 去掉了人眼不敏感的色度,保留了人眼敏感的亮度)</li>
+<li>P帧</li>
+<li>B帧</li>
+</ol>
+</li>
+<li><p>编码 (编码最重要的目的是 为了进行数据压缩,以此来降低数据传输和存储的成本)</p>
+<ol>
+<li><p>软编解码 : 利用软件本身或使用CPU对音视频进行编解码</p>
+<blockquote>
+<p>优点: 兼容性好</p>
+<p>缺点 : CPU占用率高, app占用率高</p>
+</blockquote>
+<p>软解码器开头通常是 <em>OMX.google</em></p>
+</li>
+<li><p>硬编解码 : 使用非CPU进行编解码,如显卡GPU,专用DSP芯片,厂商芯片.</p>
+<blockquote>
+<p>优点: 编解码速度快且效率高,CPU占用率低</p>
+<p>缺点:兼容性不好</p>
+</blockquote>
+<p>硬解码器开头通常是<em>OMX.[hardware_vendor]</em></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* 判断是否是软解码, 系统api</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">static</span> <span class="type">bool</span> <span class="title">IsSoftwareCodec</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *componentName)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">strncmp</span>(<span class="string">&quot;OMX.google.&quot;</span>, componentName, <span class="number">11</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (!<span class="built_in">strncmp</span>(<span class="string">&quot;OMX.&quot;</span>, componentName, <span class="number">4</span>)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>获取手机所支持的编解码器</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequiresApi(Build.VERSION_CODES.LOLLIPOP)</span></span><br><span class="line"><span class="keyword">private</span> <span class="function"><span class="keyword">fun</span> <span class="title">getSupportCodec</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">val</span> list = MediaCodecList(MediaCodecList.REGULAR_CODECS)</span><br><span class="line">    <span class="keyword">val</span> codecs = list.codecInfos</span><br><span class="line">    Log.d(TAG, <span class="string">&quot;Decoders:&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> (codec <span class="keyword">in</span> codecs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (!codec.isEncoder) Log.d(TAG, codec.name)</span><br><span class="line">    &#125;</span><br><span class="line">    Log.d(TAG, <span class="string">&quot;Encoders:&quot;</span>)</span><br><span class="line">    <span class="keyword">for</span> (codec <span class="keyword">in</span> codecs) &#123;</span><br><span class="line">        <span class="keyword">if</span> (codec.isEncoder) Log.d(TAG, codec.name)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h6 id="MediaCodec-硬编解码"><a href="#MediaCodec-硬编解码" class="headerlink" title="MediaCodec 硬编解码"></a>MediaCodec 硬编解码</h6><ol>
+<li><blockquote>
+<p>MediaCodec调用的是系统注册过的编解码器，硬件厂商把自己的硬编解码器注册到系统中就是硬编解码，如果硬件厂商注册的是软编解码就是软解码。往往不同的硬件厂商是不一样的。然后MediaCodec负责调用。</p>
+<p><a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://developer.android.google.cn/reference/android/media/MediaCodec?hl=en">https://developer.android.google.cn/reference/android/media/MediaCodec?hl=en</a></p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>​                </p>
+<h4 id="音频基础"><a href="#音频基础" class="headerlink" title="音频基础"></a>音频基础</h4><p>声波三要素: 频率, 振幅 , 波形</p>
+<p>声音信号 -&gt; 电信号 -&gt;  数字信号(二进制) </p>
+<img src="C:\Users\18853\Pictures\jzz471kmts.jpeg" alt="jzz471kmts" style="zoom:80%;" />
+
+<p>为了将模拟信号数字化, 需要进行 </p>
+<blockquote>
+<p>采样:在时间轴上对信号数字化；</p>
+<p>量化:在幅度轴上对信号数字化；</p>
+<p>编码:按一定格式记录采样和量化后的数字数据。</p>
+</blockquote>
+<p>声道:声道数也就是声音录制时的声音源数量或者回放时相应的扬声器数量</p>
+<p>数据格式:</p>
+<ol>
+<li>通常音频所说的裸数据就是 PCM</li>
+</ol>
+<blockquote>
+<p>描述一段 PCM 数据一般需要以下几个概念：量化格式(sampleFormat)、采样率（sampleRate）、声道数 (channel) 。</p>
+</blockquote>
+<ol start="2">
+<li>编码算法(压缩):</li>
+</ol>
+<blockquote>
+<p>PCM 、WAV、AAC 、MP3 、Ogg</p>
+<ol>
+<li>WAV 编码就是在 PCM 数据格式的前面加了 44 个字节，分别用来存储 PCM 的采样率、声道数、数据格式等信息。<em>特点: 音质好，大量软件支持。</em></li>
+<li>MP3 具有不错的压缩比，使用 LAME 编码 （MP3 编码格式的一种实现）的中高码率的 MP3 文件，听感上非常接近源 WAV 文件</li>
+<li>AAC 是新一代的音频有损压缩技术，它通过一些附加的编码技术(比如 PS 、SBR) 等，衍生出了 LC-AAC 、HE-AAC 、HE-AAC v2 三种主要的编码格式。<em>一般在音视频通话，直播中，短视频，以及大部分的视频都是用aac编码。</em></li>
+<li>Ogg 是一种非常有潜力的编码，在各种码率下都有比较优秀的表现，尤其是在中低码率场景下。 <em>可以用比 MP3 更小的码率实现比 MP3 更好的音质</em></li>
+</ol>
+</blockquote>
+<ol start="3">
+<li><p>播放PCM的两种方式</p>
+<blockquote>
+<p>在Android中有两种方法：一种是使用java层的<code>AudioTrack</code>方法，一种是使用底层的<code>OpenSLES</code>直接在<code>jni</code>层调用系统的<code>OpenSLES的c方法</code>实现。</p>
+</blockquote>
+</li>
+<li><p>音频采集的两种方式</p>
+<blockquote>
+<p>MediaRecorder 和 AudioRecord . MediaRecorder最终还是调用AudioRecord.</p>
+<p>区别:MediaRecorder 录制后的音频数据是经过压缩的, 需要设置编码器 ,可以用播放器播放.</p>
+<p>AudioRecord 录制的是PCM格式的数据.,需要用AudioTrack播放.</p>
+</blockquote>
+</li>
+</ol>
+<p>[参考]</p>
+<p>1.<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg">https://mp.weixin.qq.com/s/tVUgH17HZe6PWj09hYzkbg</a>   音频基础</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/03/17/AIDL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -175,10 +425,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-03-17 09:01:51 / 修改时间：16:44:42" itemprop="dateCreated datePublished" datetime="2022-03-17T09:01:51Z">2022-03-17</time>
+              <time title="创建时间：2022-03-17 09:01:51" itemprop="dateCreated datePublished" datetime="2022-03-17T09:01:51Z">2022-03-17</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-03-18 12:25:01" itemprop="dateModified" datetime="2022-03-18T12:25:01Z">2022-03-18</time>
+              </span>
 
           
 
@@ -206,6 +462,8 @@
 <p>Java 中的基本类型和 String ，CharSequence 的定向 tag <strong>默认且只能是 in</strong> 。</p>
 <p>in 为定向 tag 的话表现为服务端将会接收到一个那个对象的完整数据，但是客户端的那个对象不会因为服务端对传参的修改而发生变动；out 的话表现为服务端将会接收到那个对象的参数为空的对象，但是在服务端对接收到的空对象有任何修改之后客户端将会同步变动；inout 为定向 tag 的情况下，服务端将会接收到客户端传来对象的完整信息，并且客户端将会同步服务端对该对象的任何变动。<br>————————————————<br>版权声明：本文为CSDN博主「lypeer」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/luoyanglizi/article/details/51958091">https://blog.csdn.net/luoyanglizi/article/details/51958091</a></p>
 </blockquote>
+<h4 id="修饰符"><a href="#修饰符" class="headerlink" title="修饰符"></a>修饰符</h4><h6 id="oneway-两个作用"><a href="#oneway-两个作用" class="headerlink" title="oneway 两个作用:"></a>oneway 两个作用:</h6><p>①异步调用 , 客户端调用接口后不需要挂起线程等待binder回复,而是直接结束. 因为是直接结束,所以oneway修饰的方法都是 void 返回值类型.</p>
+<p>②串行执行: 使用oneway 标识符的aidl接口,串行执行</p>
 <p>[参考]</p>
 <p>1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903607993630733">https://juejin.cn/post/6844903607993630733</a></p>
 <p>2.<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903439613296647">https://juejin.cn/post/6844903439613296647</a>      tag介绍</p>
@@ -491,7 +749,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
